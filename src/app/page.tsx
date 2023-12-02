@@ -1,10 +1,5 @@
-import Button from "@/components/ui/Button";
+import React from "react";
 
-export default async function Home() {
-  return (
-    <div>
-      <Button>hello</Button>
-      <p>alo</p>
-    </div>
-  );
+export default function Page() {
+  return <div>Page</div>;
 }
