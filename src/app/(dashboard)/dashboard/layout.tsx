@@ -5,6 +5,8 @@ import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import FriendRequestSidebarOptions from "@/components/FriendRequestSidebarOptions";
+import { fetchRedis } from "@/helpers/redis";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -32,6 +34,13 @@ const Layout = async ({ children }: LayoutProps) => {
   if (!session) {
     notFound();
   }
+
+  const unseenRequestCount = (
+    (await fetchRedis(
+      "smembers",
+      `user:${session.user.id}:incoming_friend_requests`
+    )) as User[]
+  ).length;
 
   return (
     <div className="w-full flex h-screen">
@@ -72,6 +81,13 @@ const Layout = async ({ children }: LayoutProps) => {
               </ul>
             </li>
 
+            <li>
+              <FriendRequestSidebarOptions
+                sessionId={session.user.id}
+                initialUnseenRequestCount={unseenRequestCount}
+              />
+            </li>
+
             <li className="mt-auto flex items-center">
               <div className="flex flex-1 items-center gap-2 py-3 text-sm font-semibold leading-6 text text-gray-900">
                 <div className="relative h-8 w-8 bg-gray-50">
@@ -87,7 +103,7 @@ const Layout = async ({ children }: LayoutProps) => {
                 <div className="flex flex-col">
                   <span aria-hidden="true">{session.user.name}</span>
                   <span
-                    className="text-[0.7rem] leading-4 text-zinc-400"
+                    className="text-[0.75rem] leading-4 text-zinc-400"
                     aria-hidden="true">
                     {session.user.email}
                   </span>
