@@ -4,7 +4,7 @@ import { FunctionComponent } from "react";
 interface pageProps {}
 
 const page: FunctionComponent<pageProps> = () => {
-  return <Button>helloaaaa</Button>;
+  return <div>Dashboard</div>;
 };
 
 export default page;
