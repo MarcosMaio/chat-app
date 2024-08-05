@@ -4,6 +4,7 @@ import Button from "@/components/ui/Button";
 import { FC, useState } from "react";
 import { signIn } from "next-auth/react";
 import { toast } from "react-hot-toast";
+import Image from "next/image";
 
 const Page: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -21,14 +22,31 @@ const Page: FC = () => {
   }
 
   return (
-    <>
+    <div className="relative h-screen w-screen">
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/bg/bg-home-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-black opacity-50"></div> {/* Overlay */}
+      </div>
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="w-full flex flex-col items-center max-w-md space-y-8">
+          <div className="w-full flex flex-col items-center max-w-md space-y-8 bg-white bg-opacity-70 p-10 rounded-lg shadow-lg">
           <div className="flex flex-col items-center gap-8">
-            logo
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-              Sign in to your account
+              Welcome to Chat-App
             </h2>
+            <p className="text-center text-sm text-gray-700">
+              Sign in to your account to start chatting with your friends.
+            </p>
+            {/* <p className="text-center text-sm text-gray-500">
+              Connect with your friends and enjoy secure and private messaging.
+            </p> */}
           </div>
 
           <Button
@@ -42,7 +60,7 @@ const Page: FC = () => {
                 aria-hidden="true"
                 focusable="false"
                 data-prefix="fab"
-                data-icon="github"
+                data-icon="google"
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24">
@@ -67,10 +85,14 @@ const Page: FC = () => {
             )}
             Google
           </Button>
+          <p className="text-center text-xs text-gray-700">
+            By signing in, you agree to our Terms and Conditions and Privacy Policy.
+          </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
 export default Page;
+

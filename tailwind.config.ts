@@ -14,7 +14,16 @@ const config: Config = {
         "2x1": "1360px",
       },
     },
-    extend: {},
+    extend: {
+      colors: {
+        "custom-indigo": "#5162f3",
+      },
+    },
+    variants: {
+      extend: {
+        textColor: ['hover'],
+      },
+    },
   },
   plugins: [require("@tailwindcss/forms")],
 };
