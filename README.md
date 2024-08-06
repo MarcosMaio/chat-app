@@ -1,6 +1,12 @@
 # Chat-app
 
-Projeto de um chat-app em real time 
+Projeto de um chat-app em tempo real
+
+
+
+
+https://github.com/user-attachments/assets/08b4239c-bf6e-4eaa-9215-bf451b0fbd4e
+
 
 ### Funcionalidades:
 
