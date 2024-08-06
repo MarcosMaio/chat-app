@@ -41,7 +41,7 @@ const Page: FC = () => {
             <h2 className="mt-6 text-center text-2xl sm:text-3xl font-bold  text-gray-900">
               Welcome to Chat-App
             </h2>
-            <p className="text-center text-xs sm:text-sm lg:text-base text-gray-700">
+            <p className="text-center text-xs sm:text-sm text-gray-700">
               Sign in to your account to start chatting with your friends.
             </p>
             {/* <p className="text-center text-xs sm:text-sm lg:text-base text-gray-500">
@@ -52,7 +52,7 @@ const Page: FC = () => {
           <Button
             isLoading={isLoading}
             type="button"
-            className="max-w-sm mx-auto w-full text-xs sm:text-sm lg:text-base"
+            className="max-w-sm mx-auto w-full text-xs sm:text-sm"
             onClick={loginWithGoogle}>
             {isLoading ? null : (
               <svg
@@ -85,7 +85,7 @@ const Page: FC = () => {
             )}
             Google
           </Button>
-          <p className="text-center text-xs sm:text-sm lg:text-base text-gray-700">
+          <p className="text-center text-xs sm:text-sm  text-gray-700">
             By signing in, you agree to our Terms and Conditions and Privacy Policy.
           </p>
         </div>
