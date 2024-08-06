@@ -4,7 +4,6 @@ import Button from "@/components/ui/Button";
 import { FC, useState } from "react";
 import { signIn } from "next-auth/react";
 import { toast } from "react-hot-toast";
-import Image from "next/image";
 
 const Page: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -29,6 +28,7 @@ const Page: FC = () => {
           loop 
           muted 
           className="absolute inset-0 w-full h-full object-cover"
+          poster="/bg/bg-home-poster.jpg" // Fallback image for mobile devices
         >
           <source src="/bg/bg-home-video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
@@ -36,15 +36,15 @@ const Page: FC = () => {
         <div className="absolute inset-0 bg-black opacity-50"></div> {/* Overlay */}
       </div>
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-          <div className="w-full flex flex-col items-center max-w-md space-y-8 bg-white bg-opacity-70 p-10 rounded-lg shadow-lg">
-          <div className="flex flex-col items-center gap-8">
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+        <div className="w-full flex flex-col items-center max-w-md space-y-8 bg-white bg-opacity-70 p-6 rounded-lg shadow-lg sm:p-8 lg:p-10">
+          <div className="flex flex-col items-center gap-4 sm:gap-6 lg:gap-8">
+            <h2 className="mt-6 text-center text-2xl sm:text-3xl font-bold  text-gray-900">
               Welcome to Chat-App
             </h2>
-            <p className="text-center text-sm text-gray-700">
+            <p className="text-center text-xs sm:text-sm lg:text-base text-gray-700">
               Sign in to your account to start chatting with your friends.
             </p>
-            {/* <p className="text-center text-sm text-gray-500">
+            {/* <p className="text-center text-xs sm:text-sm lg:text-base text-gray-500">
               Connect with your friends and enjoy secure and private messaging.
             </p> */}
           </div>
@@ -52,7 +52,7 @@ const Page: FC = () => {
           <Button
             isLoading={isLoading}
             type="button"
-            className="max-w-sm mx-auto w-full"
+            className="max-w-sm mx-auto w-full text-xs sm:text-sm lg:text-base"
             onClick={loginWithGoogle}>
             {isLoading ? null : (
               <svg
@@ -85,7 +85,7 @@ const Page: FC = () => {
             )}
             Google
           </Button>
-          <p className="text-center text-xs text-gray-700">
+          <p className="text-center text-xs sm:text-sm lg:text-base text-gray-700">
             By signing in, you agree to our Terms and Conditions and Privacy Policy.
           </p>
         </div>
@@ -95,4 +95,3 @@ const Page: FC = () => {
 };
 
 export default Page;
-
